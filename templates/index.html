@@ -6,9 +6,9 @@
     	<link rel="stylesheet" media="all" href="{{ url_for('static', filename='style.css') }}">
 	</head>
 	<body>
-		<div class="container col-md-8 col-md-offset-2">
+		<section id="query" class="container col-md-8 col-md-offset-2">
 			<h1>Simple URL Shortener</h1>
-			<form name="input" method="post" id="query">
+			<form name="input" method="post">
 				<div class="input-group">
 					<input class="form-control" type="text" name="url" placeholder="Enter your URL">
 					<span class="input-group-btn">
@@ -18,8 +18,22 @@
 			</form>
 
 			{% if url is defined %}
-			<h3>Your Shortened URL: <a href="{{url}}" target="_blank">{{url}}</a></p>
-			{% endif %}
-		</div>
+				<h3>Your Shortened URL: <a href="{{url}}" target="_blank">{{url}}</a></h3>
+				<p><a href="/">Back to List</a></p>
+			{% endif %}			
+		</section>
+
+		{% if links %}
+		<section id="list" class="container col-md-8 col-md-offset-2">
+			<h3>Existing URL's</h3>
+			<ol>
+			{% for link in links %}
+				<li>
+					<a href="{{link[0]}}" target="_blank">{{link[0]}}</a> (Number of Visits: {{link[1]}})
+				</li>
+			{% endfor %}
+			</ol>
+		</section>
+		{% endif %}
 	</body>
 </html>
