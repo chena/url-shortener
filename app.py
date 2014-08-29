@@ -37,7 +37,7 @@ def home():
 	Link.query.all()
 	prefix = _to_full_url(request.host) + '/'
 	links = [(prefix + link.shortened, link.visits) for link in Link.query.all()]
-	return render_template('index.html', links=links if len(links) > 0 else None)
+	return render_template('index.html', links=links)
 
 @app.route('/', methods=['POST'])
 def shorten_url():
