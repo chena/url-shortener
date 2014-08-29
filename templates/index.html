@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>URL Shortener</title>
+    	<link rel="stylesheet" media="all" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    	<link rel="stylesheet" media="all" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+		<div class="container col-md-8 col-md-offset-2">
+			<h1>Simple URL Shortener</h1>
+			<form name="input" method="post" id="query">
+				<div class="input-group">
+					<input class="form-control" type="text" name="url" placeholder="Enter your URL">
+					<span class="input-group-btn">
+						<input class="btn btn-default" type="submit" value="Submit">
+					</span>
+				</div>
+			</form>
+
+			{% if url is defined %}
+			<h3>Your Shortened URL: <a href="{{url}}" target="_blank">{{url}}</a></p>
+			{% endif %}
+		</div>
+	</body>
+</html>
